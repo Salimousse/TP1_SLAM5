@@ -22,5 +22,11 @@ namespace TP1_SLAM5
         {
 
         }
+
+        private void btn_commande_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+        }
     }
 }

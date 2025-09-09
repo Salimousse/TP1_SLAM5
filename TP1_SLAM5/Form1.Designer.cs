@@ -32,6 +32,7 @@
             label1 = new Label();
             BsClients = new BindingSource(components);
             dgvClients = new DataGridView();
+            btn_commande = new Button();
             ((System.ComponentModel.ISupportInitialize)BsClients).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
             SuspendLayout();
@@ -53,11 +54,22 @@
             dgvClients.Size = new Size(584, 150);
             dgvClients.TabIndex = 1;
             // 
+            // btn_commande
+            // 
+            btn_commande.Location = new Point(349, 332);
+            btn_commande.Name = "btn_commande";
+            btn_commande.Size = new Size(107, 23);
+            btn_commande.TabIndex = 2;
+            btn_commande.Text = "Commandes";
+            btn_commande.UseVisualStyleBackColor = true;
+            btn_commande.Click += btn_commande_Click;
+            // 
             // ListeClients
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_commande);
             Controls.Add(dgvClients);
             Controls.Add(label1);
             Name = "ListeClients";
@@ -74,5 +86,6 @@
         private Label label1;
         private BindingSource BsClients;
         private DataGridView dgvClients;
+        private Button btn_commande;
     }
 }
