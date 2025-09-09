@@ -32,8 +32,12 @@
             label1 = new Label();
             dgvCommande = new DataGridView();
             BsCommande = new BindingSource(components);
+            CbClients = new ComboBox();
+            label2 = new Label();
+            BsClients2 = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgvCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BsClients2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -47,6 +51,8 @@
             // 
             // dgvCommande
             // 
+            dgvCommande.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCommande.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvCommande.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCommande.Location = new Point(120, 107);
             dgvCommande.Name = "dgvCommande";
@@ -54,11 +60,34 @@
             dgvCommande.TabIndex = 1;
             dgvCommande.CellContentClick += dgvCommande_CellContentClick;
             // 
+            // CbClients
+            // 
+            CbClients.FormattingEnabled = true;
+            CbClients.Location = new Point(565, 361);
+            CbClients.Name = "CbClients";
+            CbClients.Size = new Size(153, 23);
+            CbClients.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(589, 331);
+            label2.Name = "label2";
+            label2.Size = new Size(95, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Liste des clients :";
+            // 
+            // BsClients2
+            // 
+            BsClients2.CurrentChanged += BsClients2_CurrentChanged;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(CbClients);
             Controls.Add(dgvCommande);
             Controls.Add(label1);
             Name = "Form2";
@@ -66,6 +95,7 @@
             Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCommande).EndInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BsClients2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -75,5 +105,8 @@
         private Label label1;
         private DataGridView dgvCommande;
         private BindingSource BsCommande;
+        private ComboBox CbClients;
+        private Label label2;
+        private BindingSource BsClients2;
     }
 }

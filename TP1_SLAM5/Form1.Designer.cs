@@ -48,6 +48,8 @@
             // 
             // dgvClients
             // 
+            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClients.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClients.Location = new Point(98, 107);
             dgvClients.Name = "dgvClients";
