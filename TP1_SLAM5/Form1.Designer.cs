@@ -1,6 +1,6 @@
 ﻿namespace TP1_SLAM5
 {
-    partial class Form1
+    partial class ListeClients
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            BsClients = new BindingSource(components);
+            dgvClients = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)BsClients).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(326, 57);
+            label1.Name = "label1";
+            label1.Size = new Size(89, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Liste des clients";
+            // 
+            // dgvClients
+            // 
+            dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClients.Location = new Point(98, 107);
+            dgvClients.Name = "dgvClients";
+            dgvClients.Size = new Size(584, 150);
+            dgvClients.TabIndex = 1;
+            // 
+            // ListeClients
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dgvClients);
+            Controls.Add(label1);
+            Name = "ListeClients";
+            Text = "Liste des clients";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)BsClients).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClients).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private BindingSource BsClients;
+        private DataGridView dgvClients;
     }
 }
