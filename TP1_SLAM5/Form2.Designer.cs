@@ -39,6 +39,7 @@
             label3 = new Label();
             button1 = new Button();
             button2 = new Button();
+            btn_ajouter = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsClients2).BeginInit();
@@ -122,11 +123,22 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // btn_ajouter
+            // 
+            btn_ajouter.Location = new Point(77, 279);
+            btn_ajouter.Name = "btn_ajouter";
+            btn_ajouter.Size = new Size(109, 55);
+            btn_ajouter.TabIndex = 8;
+            btn_ajouter.Text = "AJOUTER";
+            btn_ajouter.UseVisualStyleBackColor = true;
+            btn_ajouter.Click += btn_ajouter_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_ajouter);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label3);
@@ -157,5 +169,6 @@
         private Label label3;
         private Button button1;
         private Button button2;
+        private Button btn_ajouter;
     }
 }

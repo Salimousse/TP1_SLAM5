@@ -70,8 +70,8 @@ namespace TP1_SLAM5
 
 
 
-       
-       
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -97,6 +97,13 @@ namespace TP1_SLAM5
             })
                 .Where(x => x.Montantcde >= Convert.ToInt32(txt_commande.Text));
             dgvCommande.DataSource = BsCommande;
+        }
+
+        private void btn_ajouter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormGestionCommande formGestionCommande = new FormGestionCommande();
+            formGestionCommande.ShowDialog();
         }
     }
 }// using System;
