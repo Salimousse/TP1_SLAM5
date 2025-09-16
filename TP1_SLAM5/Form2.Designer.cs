@@ -35,6 +35,8 @@
             CbClients = new ComboBox();
             label2 = new Label();
             BsClients2 = new BindingSource(components);
+            txt_commande = new TextBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsClients2).BeginInit();
@@ -81,11 +83,30 @@
             // 
             BsClients2.CurrentChanged += BsClients2_CurrentChanged;
             // 
+            // txt_commande
+            // 
+            txt_commande.Location = new Point(351, 323);
+            txt_commande.Name = "txt_commande";
+            txt_commande.Size = new Size(123, 23);
+            txt_commande.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(351, 299);
+            label3.Name = "label3";
+            label3.Size = new Size(130, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Saisir prix commande : ";
+            label3.Click += label3_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(txt_commande);
             Controls.Add(label2);
             Controls.Add(CbClients);
             Controls.Add(dgvCommande);
@@ -108,5 +129,7 @@
         private ComboBox CbClients;
         private Label label2;
         private BindingSource BsClients2;
+        private TextBox txt_commande;
+        private Label label3;
     }
 }

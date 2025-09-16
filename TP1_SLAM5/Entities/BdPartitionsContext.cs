@@ -26,12 +26,12 @@ public partial class BdPartitionsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=root;database=bd_partitions", Microsoft.EntityFrameworkCore.ServerVersion.Parse("9.1.0-mysql"));
+        => optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=root;database=bd_partitions", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .UseCollation("utf8mb4_0900_ai_ci")
+            .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
 
         modelBuilder.Entity<Auteur>(entity =>
@@ -40,7 +40,9 @@ public partial class BdPartitionsContext : DbContext
 
             entity.ToTable("auteur");
 
-            entity.Property(e => e.Numaut).HasColumnName("NUMAUT");
+            entity.Property(e => e.Numaut)
+                .HasColumnType("int(11)")
+                .HasColumnName("NUMAUT");
             entity.Property(e => e.Nomaut)
                 .HasMaxLength(128)
                 .HasColumnName("NOMAUT");
@@ -55,7 +57,9 @@ public partial class BdPartitionsContext : DbContext
 
             entity.ToTable("client");
 
-            entity.Property(e => e.Numcli).HasColumnName("NUMCLI");
+            entity.Property(e => e.Numcli)
+                .HasColumnType("int(11)")
+                .HasColumnName("NUMCLI");
             entity.Property(e => e.Adrcli)
                 .HasMaxLength(128)
                 .HasColumnName("ADRCLI");
@@ -75,10 +79,16 @@ public partial class BdPartitionsContext : DbContext
 
             entity.HasIndex(e => e.Numcli, "I_FK_COMMANDE_ADHERENT");
 
-            entity.Property(e => e.Numcde).HasColumnName("NUMCDE");
+            entity.Property(e => e.Numcde)
+                .HasColumnType("int(11)")
+                .HasColumnName("NUMCDE");
             entity.Property(e => e.Datecde).HasColumnName("DATECDE");
-            entity.Property(e => e.Montantcde).HasColumnName("MONTANTCDE");
-            entity.Property(e => e.Numcli).HasColumnName("NUMCLI");
+            entity.Property(e => e.Montantcde)
+                .HasColumnType("int(11)")
+                .HasColumnName("MONTANTCDE");
+            entity.Property(e => e.Numcli)
+                .HasColumnType("int(11)")
+                .HasColumnName("NUMCLI");
 
             entity.HasOne(d => d.NumcliNavigation).WithMany(p => p.Commandes)
                 .HasForeignKey(d => d.Numcli)
@@ -103,8 +113,12 @@ public partial class BdPartitionsContext : DbContext
                         j.ToTable("contenir");
                         j.HasIndex(new[] { "Numcde" }, "I_FK_CONTENIR_COMMANDE");
                         j.HasIndex(new[] { "Numpart" }, "NUMPART");
-                        j.IndexerProperty<int>("Numcde").HasColumnName("NUMCDE");
-                        j.IndexerProperty<int>("Numpart").HasColumnName("NUMPART");
+                        j.IndexerProperty<int>("Numcde")
+                            .HasColumnType("int(11)")
+                            .HasColumnName("NUMCDE");
+                        j.IndexerProperty<int>("Numpart")
+                            .HasColumnType("int(11)")
+                            .HasColumnName("NUMPART");
                     });
         });
 
@@ -114,11 +128,15 @@ public partial class BdPartitionsContext : DbContext
 
             entity.ToTable("partitions");
 
-            entity.Property(e => e.Numpart).HasColumnName("NUMPART");
+            entity.Property(e => e.Numpart)
+                .HasColumnType("int(11)")
+                .HasColumnName("NUMPART");
             entity.Property(e => e.Libpart)
                 .HasMaxLength(128)
                 .HasColumnName("LIBPART");
-            entity.Property(e => e.Prixpart).HasColumnName("PRIXPART");
+            entity.Property(e => e.Prixpart)
+                .HasColumnType("int(11)")
+                .HasColumnName("PRIXPART");
 
             entity.HasMany(d => d.Numauts).WithMany(p => p.Numparts)
                 .UsingEntity<Dictionary<string, object>>(
@@ -138,8 +156,12 @@ public partial class BdPartitionsContext : DbContext
                         j.ToTable("ecrire");
                         j.HasIndex(new[] { "Numaut" }, "I_FK_ECRIRE_AUTEUR");
                         j.HasIndex(new[] { "Numpart" }, "I_FK_ECRIRE_PARTITIONS");
-                        j.IndexerProperty<int>("Numpart").HasColumnName("NUMPART");
-                        j.IndexerProperty<int>("Numaut").HasColumnName("NUMAUT");
+                        j.IndexerProperty<int>("Numpart")
+                            .HasColumnType("int(11)")
+                            .HasColumnName("NUMPART");
+                        j.IndexerProperty<int>("Numaut")
+                            .HasColumnType("int(11)")
+                            .HasColumnName("NUMAUT");
                     });
         });
 

@@ -26,7 +26,8 @@ namespace TP1_SLAM5
         {
             CbClients.ValueMember = "NUMCLI";
             CbClients.DisplayMember = "nomcomplet";
-            BsClients2.DataSource = (Modele.listeClients()).Select(x => new {
+            BsClients2.DataSource = (Modele.listeClients()).Select(x => new
+            {
                 x.Numcli,
                 nomComplet = x.Nomcli + " " + x.Prenomcli
             }); ;
@@ -61,5 +62,15 @@ namespace TP1_SLAM5
             .OrderBy(x => x.Datecde);
             dgvCommande.DataSource = BsCommande;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_commande_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
-}
+}// using System;
