@@ -68,9 +68,41 @@ namespace TP1_SLAM5
 
         }
 
+        private void filter(string text)
+        {
+            int prix;
+            if (int.TryParse(text, out prix))
+            {
+                BsCommande.DataSource = Modele.ListeCommandes().Where(x => x.Montantcde >= prix).Select(x => new
+                {
+                    x.Numcde,
+                    x.Datecde,
+                    x.Montantcde,
+                    x.NumcliNavigation.Nomcli,
+                    x.NumcliNavigation.Prenomcli
+                })
+                .OrderBy(x => x.Datecde);
+                dgvCommande.DataSource = BsCommande;
+            }
+            else
+            {
+                BsCommande.DataSource = Modele.ListeCommandes().Select(x => new
+                {
+                    x.Numcde,
+                    x.Datecde,
+                    x.Montantcde,
+                    x.NumcliNavigation.Nomcli,
+                    x.NumcliNavigation.Prenomcli
+                })
+                .OrderBy(x => x.Datecde);
+                dgvCommande.DataSource = BsCommande;
+            }
+        }
+
         private void txt_commande_TextChanged(object sender, EventArgs e)
         {
-            
+            filter(txt_commande.Text);
+
         }
     }
 }// using System;

@@ -89,6 +89,7 @@
             txt_commande.Name = "txt_commande";
             txt_commande.Size = new Size(123, 23);
             txt_commande.TabIndex = 4;
+            txt_commande.TextChanged += txt_commande_TextChanged;
             // 
             // label3
             // 
