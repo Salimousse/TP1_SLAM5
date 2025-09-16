@@ -37,6 +37,8 @@
             BsClients2 = new BindingSource(components);
             txt_commande = new TextBox();
             label3 = new Label();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsClients2).BeginInit();
@@ -89,7 +91,6 @@
             txt_commande.Name = "txt_commande";
             txt_commande.Size = new Size(123, 23);
             txt_commande.TabIndex = 4;
-            txt_commande.TextChanged += txt_commande_TextChanged;
             // 
             // label3
             // 
@@ -101,11 +102,33 @@
             label3.Text = "Saisir prix commande : ";
             label3.Click += label3_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(46, 361);
+            button1.Name = "button1";
+            button1.Size = new Size(109, 55);
+            button1.TabIndex = 6;
+            button1.Text = "Toutes les commandes";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(380, 352);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 7;
+            button2.Text = "filtrer";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(txt_commande);
             Controls.Add(label2);
@@ -132,5 +155,7 @@
         private BindingSource BsClients2;
         private TextBox txt_commande;
         private Label label3;
+        private Button button1;
+        private Button button2;
     }
 }

@@ -69,6 +69,9 @@ public partial class BdPartitionsContext : DbContext
             entity.Property(e => e.Prenomcli)
                 .HasMaxLength(128)
                 .HasColumnName("PRENOMCLI");
+            entity.Property(e => e.Telcli)
+                .HasMaxLength(255)
+                .HasColumnName("TELCLI");
         });
 
         modelBuilder.Entity<Commande>(entity =>

@@ -68,41 +68,35 @@ namespace TP1_SLAM5
 
         }
 
-        private void filter(string text)
+
+
+       
+       
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            int prix;
-            if (int.TryParse(text, out prix))
+            BsCommande.DataSource = Modele.ListeCommandes().Select(x => new
             {
-                BsCommande.DataSource = Modele.ListeCommandes().Where(x => x.Montantcde >= prix).Select(x => new
-                {
-                    x.Numcde,
-                    x.Datecde,
-                    x.Montantcde,
-                    x.NumcliNavigation.Nomcli,
-                    x.NumcliNavigation.Prenomcli
-                })
-                .OrderBy(x => x.Datecde);
-                dgvCommande.DataSource = BsCommande;
-            }
-            else
-            {
-                BsCommande.DataSource = Modele.ListeCommandes().Select(x => new
-                {
-                    x.Numcde,
-                    x.Datecde,
-                    x.Montantcde,
-                    x.NumcliNavigation.Nomcli,
-                    x.NumcliNavigation.Prenomcli
-                })
-                .OrderBy(x => x.Datecde);
-                dgvCommande.DataSource = BsCommande;
-            }
+                x.Numcde,
+                x.Datecde,
+                x.Montantcde,
+                x.NumcliNavigation.Nomcli,
+                x.NumcliNavigation.Prenomcli
+            });
         }
 
-        private void txt_commande_TextChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            filter(txt_commande.Text);
-
+            BsCommande.DataSource = Modele.listeCommandesParClient(Convert.ToInt32(CbClients.SelectedValue)).Select(x => new
+            {
+                x.Numcde,
+                x.Datecde,
+                x.Montantcde,
+                x.NumcliNavigation.Nomcli,
+                x.NumcliNavigation.Prenomcli
+            })
+                .Where(x => x.Montantcde >= Convert.ToInt32(txt_commande.Text));
+            dgvCommande.DataSource = BsCommande;
         }
     }
 }// using System;
