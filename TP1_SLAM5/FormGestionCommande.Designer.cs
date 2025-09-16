@@ -47,6 +47,7 @@
             txt_montant.Name = "txt_montant";
             txt_montant.Size = new Size(145, 23);
             txt_montant.TabIndex = 0;
+            txt_montant.KeyPress += txt_montant_KeyPress;
             // 
             // label1
             // 

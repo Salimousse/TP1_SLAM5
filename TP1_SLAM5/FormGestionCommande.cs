@@ -38,5 +38,21 @@ namespace TP1_SLAM5
         {
             this.Close();
         }
+
+        private void txt_montant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || e.KeyChar > '9') && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+
+                {
+                    MessageBox.Show("Erreur, vous devez saisir des entiers", "Erreur", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                    e.Handled = true; // efface le dernier caractère saisi
+                }
+
+
+            }
+        }
     }
 }
+
