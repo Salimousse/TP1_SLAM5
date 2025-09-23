@@ -43,7 +43,7 @@ namespace TP1_SLAM5
             {
                 maCommande = new Commande();
                 maCommande.Montantcde = montant;
-                
+
                 maCommande.Datecde = DateOnly.FromDateTime(dateC.Date);
 
 
@@ -67,9 +67,67 @@ namespace TP1_SLAM5
             }
             return vretour;
         }
+        public static Commande RecupererCommande(int idCommande)
+        {
+            Commande uneCommande = new Commande();
+            try
+            {
+                uneCommande = monModel.Commandes.Include(c => c.Numparts).First(x =>
+               x.Numcde == idCommande);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            return uneCommande;
+        }
 
 
+        public static bool ModifierCommande(int idCommande, int montant, DateTime dateC, int idClient)
+        {
+            bool vretour = true;
+            try
+            {
+                Commande maCommande = monModel.Commandes.First(x => x.Numcde == idCommande);
+                maCommande.Montantcde = montant;
+                maCommande.Datecde = DateOnly.FromDateTime(dateC.Date);
+                maCommande.Numcli = idClient;
+                monModel.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                vretour = false;
+            }
+            return vretour;
+        }
+
+    
+
+
+
+        public static bool SupprimerCommande(int idCommande)
+        {
+            bool vretour = true;
+            try
+            {
+                Commande maCommande = monModel.Commandes.First(x => x.Numcde == idCommande);
+                monModel.Commandes.Remove(maCommande);
+                monModel.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                vretour = false;
+            }
+            return vretour;
+        }
 
 
     }
 }
+       
+
+
+
+
+
+

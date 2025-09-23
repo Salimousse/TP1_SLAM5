@@ -40,6 +40,7 @@
             button1 = new Button();
             button2 = new Button();
             btn_ajouter = new Button();
+            btn_modifier = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsClients2).BeginInit();
@@ -63,7 +64,6 @@
             dgvCommande.Name = "dgvCommande";
             dgvCommande.Size = new Size(542, 150);
             dgvCommande.TabIndex = 1;
-            dgvCommande.CellContentClick += dgvCommande_CellContentClick;
             // 
             // CbClients
             // 
@@ -105,7 +105,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(46, 361);
+            button1.Location = new Point(12, 383);
             button1.Name = "button1";
             button1.Size = new Size(109, 55);
             button1.TabIndex = 6;
@@ -133,11 +133,22 @@
             btn_ajouter.UseVisualStyleBackColor = true;
             btn_ajouter.Click += btn_ajouter_Click;
             // 
+            // btn_modifier
+            // 
+            btn_modifier.Location = new Point(175, 361);
+            btn_modifier.Name = "btn_modifier";
+            btn_modifier.Size = new Size(98, 55);
+            btn_modifier.TabIndex = 9;
+            btn_modifier.Text = "MODIFIER";
+            btn_modifier.UseVisualStyleBackColor = true;
+            btn_modifier.Click += btn_modifier_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_modifier);
             Controls.Add(btn_ajouter);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -170,5 +181,6 @@
         private Button button1;
         private Button button2;
         private Button btn_ajouter;
+        private Button btn_modifier;
     }
 }

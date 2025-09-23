@@ -101,9 +101,34 @@ namespace TP1_SLAM5
 
         private void btn_ajouter_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FormGestionCommande formGestionCommande = new FormGestionCommande();
             formGestionCommande.ShowDialog();
         }
+
+        private void btn_modifier_Click(object sender, EventArgs e)
+{
+    if (dgvCommande.CurrentRow == null) return;
+
+    // 🔑 Récupération de l'ID de la commande sélectionnée
+    int idCommande = (int)dgvCommande.CurrentRow.Cells["Numcde"].Value;
+
+    // Ouverture du formulaire de modification
+    FormGestionCommande formGestion = new FormGestionCommande();
+    if (formGestion.ShowDialog() == DialogResult.OK)
+    {
+        // Rafraîchir la liste après modification
+        BsCommande.DataSource = Modele.ListeCommandes().Select(x => new
+        {
+            x.Numcde,
+            x.Datecde,
+            x.Montantcde,
+            x.NumcliNavigation.Nomcli,
+            x.NumcliNavigation.Prenomcli
+        }).ToList();
+        dgvCommande.DataSource = BsCommande;
     }
-}// using System;
+}
+
+
+    }
+}
