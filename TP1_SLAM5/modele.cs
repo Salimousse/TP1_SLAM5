@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace TP1_SLAM5
 {
+    using System.Net;
     using Microsoft.EntityFrameworkCore;
     using TP1_SLAM5.Entities;
+    using static System.Runtime.InteropServices.JavaScript.JSType;
+
     public static class Modele
     {
         private static BdPartitionsContext monModel;
@@ -30,6 +33,41 @@ namespace TP1_SLAM5
            idClient).Include(p => p.NumcliNavigation).ToList();
             return lesCommandes;
         }
+
+        public static bool AjoutCommande(int montant, DateTime dateC, int idClient)
+        {
+            Commande maCommande;
+
+            bool vretour = true;
+            try
+            {
+                maCommande = new Commande();
+                maCommande.Montantcde = montant;
+                
+                maCommande.Datecde = DateOnly.FromDateTime(dateC.Date);
+
+
+
+
+
+                maCommande.Numcli = idClient;
+                // ajout de l’objet : correspond à un insert
+                monModel.Commandes.Add(maCommande); // correspond à un INSERT INTO
+                monModel.SaveChanges();
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                vretour = false;
+            }
+            return vretour;
+        }
+
 
 
 

@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             txt_montant = new TextBox();
             label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            DT1 = new DateTimePicker();
             label2 = new Label();
             cbClient = new ComboBox();
             label3 = new Label();
@@ -58,12 +58,13 @@
             label1.TabIndex = 1;
             label1.Text = "Montant :";
             // 
-            // dateTimePicker1
+            // DT1
             // 
-            dateTimePicker1.Location = new Point(330, 127);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 2;
+            DT1.Location = new Point(330, 127);
+            DT1.Name = "DT1";
+            DT1.Size = new Size(200, 23);
+            DT1.TabIndex = 2;
+            DT1.ValueChanged += DT1_ValueChanged;
             // 
             // label2
             // 
@@ -100,6 +101,7 @@
             btn_OK.TabIndex = 6;
             btn_OK.Text = "OK";
             btn_OK.UseVisualStyleBackColor = true;
+            btn_OK.Click += btn_OK_Click;
             // 
             // btn_annuler
             // 
@@ -121,7 +123,7 @@
             Controls.Add(label3);
             Controls.Add(cbClient);
             Controls.Add(label2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(DT1);
             Controls.Add(label1);
             Controls.Add(txt_montant);
             Name = "FormGestionCommande";
@@ -136,7 +138,7 @@
 
         private TextBox txt_montant;
         private Label label1;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker DT1;
         private Label label2;
         private ComboBox cbClient;
         private Label label3;

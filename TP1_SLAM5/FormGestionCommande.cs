@@ -18,6 +18,8 @@ namespace TP1_SLAM5
             InitializeComponent();
         }
 
+
+
         private void FormGestionCommande_Load(object sender, EventArgs e)
         {
             cbClient.ValueMember = "NUMCLI";
@@ -28,6 +30,9 @@ namespace TP1_SLAM5
                 nomComplet = x.Nomcli + " " + x.Prenomcli
             }); ;
             cbClient.DataSource = BsClients3;
+            cbClient.SelectedIndex = -1;
+
+
 
 
 
@@ -38,6 +43,8 @@ namespace TP1_SLAM5
         {
             this.Close();
         }
+
+
 
         private void txt_montant_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -52,6 +59,35 @@ namespace TP1_SLAM5
 
 
             }
+        }
+
+        private void DT1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_OK_Click(object sender, EventArgs e)
+        {
+
+            if (cbClient.SelectedIndex == -1)
+            {
+                MessageBox.Show("Erreur, vous devez choisir un client", "Erreur", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+                return;
+            }
+            if (Modele.AjoutCommande(Convert.ToInt32(txt_montant.Text), DT1.Value, Convert.ToInt32(cbClient.SelectedValue)) == false)
+            {
+                MessageBox.Show("Erreur, l'ajout de la commande a échoué", "Erreur", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Ajout de la commande effectué", "Ajout", MessageBoxButtons.OK,
+               MessageBoxIcon.Information);
+                this.Close();
+            }
+
         }
     }
 }
