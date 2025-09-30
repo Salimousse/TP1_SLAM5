@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP1_SLAM5.Entities;
 
 namespace TP1_SLAM5
 {
@@ -106,29 +107,42 @@ namespace TP1_SLAM5
         }
 
         private void btn_modifier_Click(object sender, EventArgs e)
-{
-    if (dgvCommande.CurrentRow == null) return;
-
-    // 🔑 Récupération de l'ID de la commande sélectionnée
-    int idCommande = (int)dgvCommande.CurrentRow.Cells["Numcde"].Value;
-
-    // Ouverture du formulaire de modification
-    FormGestionCommande formGestion = new FormGestionCommande();
-    if (formGestion.ShowDialog() == DialogResult.OK)
-    {
-        // Rafraîchir la liste après modification
-        BsCommande.DataSource = Modele.ListeCommandes().Select(x => new
         {
-            x.Numcde,
-            x.Datecde,
-            x.Montantcde,
-            x.NumcliNavigation.Nomcli,
-            x.NumcliNavigation.Prenomcli
-        }).ToList();
-        dgvCommande.DataSource = BsCommande;
+            if (dgvCommande.CurrentRow == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une commande à modifier.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idCommande = Convert.ToInt32(dgvCommande.CurrentRow.Cells["Numcde"].Value);
+            Commande commandeAModifier = Modele.RecupererCommande(idCommande);
+
+            if (commandeAModifier == null)
+            {
+                MessageBox.Show("La commande sélectionnée n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            FormGestionCommande formGestionCommande = new FormGestionCommande(commandeAModifier); // Mode modification
+            if (formGestionCommande.ShowDialog() == DialogResult.OK)
+            {
+                // Rafraîchir la liste des commandes après modification
+                BsCommande.DataSource = Modele.ListeCommandes().Select(x => new
+                {
+                    x.Numcde,
+                    x.Datecde,
+                    x.Montantcde,
+                    x.NumcliNavigation.Nomcli,
+                    x.NumcliNavigation.Prenomcli
+                });
+                dgvCommande.DataSource = BsCommande;
+            }
+
+        }
+
     }
-}
 
 
-    }
+
 }
+

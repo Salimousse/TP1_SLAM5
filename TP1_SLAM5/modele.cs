@@ -83,15 +83,15 @@ namespace TP1_SLAM5
         }
 
 
-        public static bool ModifierCommande(int idCommande, int montant, DateTime dateC, int idClient)
+        public static bool ModifierCommande(int idCde, int montant, DateTime dateC, int idclient)
         {
             bool vretour = true;
             try
             {
-                Commande maCommande = monModel.Commandes.First(x => x.Numcde == idCommande);
+                Commande maCommande = monModel.Commandes.First(x => x.Numcde == idCde);
                 maCommande.Montantcde = montant;
                 maCommande.Datecde = DateOnly.FromDateTime(dateC.Date);
-                maCommande.Numcli = idClient;
+                maCommande.Numcli = idclient;
                 monModel.SaveChanges();
             }
             catch (Exception ex)
@@ -101,7 +101,14 @@ namespace TP1_SLAM5
             return vretour;
         }
 
-    
+
+
+
+
+
+
+
+
 
 
 
