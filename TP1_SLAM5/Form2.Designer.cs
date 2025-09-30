@@ -41,6 +41,7 @@
             button2 = new Button();
             btn_ajouter = new Button();
             btn_modifier = new Button();
+            btn_sup = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsCommande).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BsClients2).BeginInit();
@@ -125,7 +126,7 @@
             // 
             // btn_ajouter
             // 
-            btn_ajouter.Location = new Point(77, 279);
+            btn_ajouter.Location = new Point(25, 279);
             btn_ajouter.Name = "btn_ajouter";
             btn_ajouter.Size = new Size(109, 55);
             btn_ajouter.TabIndex = 8;
@@ -135,7 +136,7 @@
             // 
             // btn_modifier
             // 
-            btn_modifier.Location = new Point(175, 361);
+            btn_modifier.Location = new Point(199, 279);
             btn_modifier.Name = "btn_modifier";
             btn_modifier.Size = new Size(98, 55);
             btn_modifier.TabIndex = 9;
@@ -143,11 +144,22 @@
             btn_modifier.UseVisualStyleBackColor = true;
             btn_modifier.Click += btn_modifier_Click;
             // 
+            // btn_sup
+            // 
+            btn_sup.Location = new Point(199, 383);
+            btn_sup.Name = "btn_sup";
+            btn_sup.Size = new Size(98, 55);
+            btn_sup.TabIndex = 10;
+            btn_sup.Text = "SUPPRIMER";
+            btn_sup.UseVisualStyleBackColor = true;
+            btn_sup.Click += btn_sup_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_sup);
             Controls.Add(btn_modifier);
             Controls.Add(btn_ajouter);
             Controls.Add(button2);
@@ -182,5 +194,6 @@
         private Button button2;
         private Button btn_ajouter;
         private Button btn_modifier;
+        private Button btn_sup;
     }
 }

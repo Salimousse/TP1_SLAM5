@@ -101,6 +101,33 @@ namespace TP1_SLAM5
             return vretour;
         }
 
+            public static bool SuppCommande(int idCommande)
+        {
+            bool vretour = true;
+            try
+            {
+                Commande maCommande = RecupererCommande(idCommande);
+                monModel.Commandes.Remove(maCommande); // correspond au DELETE
+                monModel.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                vretour = false;
+            }
+            return vretour;
+        }
+
+
+
+
+
+
+
+
+
+        
+
 
 
 

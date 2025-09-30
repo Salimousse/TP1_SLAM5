@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using TP1_SLAM5.Entities;
 
 namespace TP1_SLAM5
@@ -140,6 +141,22 @@ namespace TP1_SLAM5
 
         }
 
+        private void btn_sup_Click(object sender, EventArgs e)
+        {
+            if (dgvCommande.CurrentRow == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une commande à supprimer.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idCommande = Convert.ToInt32(dgvCommande.CurrentRow.Cells["Numcde"].Value);
+
+            if (MessageBox.Show("Etes vous sur de vouloir supprimer la commande :" + idCommande,
+                "Suppression", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Modele.SuppCommande(idCommande);
+            }
+        }
     }
 
 
