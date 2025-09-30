@@ -150,13 +150,23 @@ namespace TP1_SLAM5
             }
 
             int idCommande = Convert.ToInt32(dgvCommande.CurrentRow.Cells["Numcde"].Value);
+            
+            DateOnly dateTime = (DateOnly)dgvCommande.CurrentRow.Cells["Datecde"].Value;
 
-            if (MessageBox.Show("Etes vous sur de vouloir supprimer la commande :" + idCommande,
-                "Suppression", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            string nomClient = dgvCommande.CurrentRow.Cells["Nomcli"].Value.ToString();
+
+            string prenomClient = dgvCommande.CurrentRow.Cells["Prenomcli"].Value.ToString();
+
+
+            if (MessageBox.Show("Etes vous sur de vouloir supprimer la commande : " + idCommande + " du " + dateTime.ToShortDateString() + " de " + nomClient + " " + prenomClient,
+               "Suppression", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 Modele.SuppCommande(idCommande);
             }
         }
+
+
+
     }
 
 
