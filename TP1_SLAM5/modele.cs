@@ -23,6 +23,11 @@ namespace TP1_SLAM5
             return monModel.Clients.ToList();
         }
 
+        public static List<Partition> listePartitions()
+        {
+            return monModel.Partitions.ToList();
+        }
+
         public static List<Commande> ListeCommandes()
         {
             return monModel.Commandes.Include(a => a.NumcliNavigation).ToList();

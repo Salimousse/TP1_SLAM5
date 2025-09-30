@@ -38,7 +38,11 @@
             btn_OK = new Button();
             BsClients3 = new BindingSource(components);
             btn_annuler = new Button();
+            lbl_partitions = new Label();
+            clb_partitions = new CheckedListBox();
+            BS_partitions = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)BsClients3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BS_partitions).BeginInit();
             SuspendLayout();
             // 
             // txt_montant
@@ -113,11 +117,31 @@
             btn_annuler.UseVisualStyleBackColor = true;
             btn_annuler.Click += btn_annuler_Click;
             // 
+            // lbl_partitions
+            // 
+            lbl_partitions.AutoSize = true;
+            lbl_partitions.Location = new Point(648, 109);
+            lbl_partitions.Name = "lbl_partitions";
+            lbl_partitions.Size = new Size(66, 15);
+            lbl_partitions.TabIndex = 9;
+            lbl_partitions.Text = "Partitions : ";
+            // 
+            // clb_partitions
+            // 
+            clb_partitions.FormattingEnabled = true;
+            clb_partitions.ImeMode = ImeMode.NoControl;
+            clb_partitions.Location = new Point(555, 127);
+            clb_partitions.Name = "clb_partitions";
+            clb_partitions.Size = new Size(212, 94);
+            clb_partitions.TabIndex = 10;
+            // 
             // FormGestionCommande
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(clb_partitions);
+            Controls.Add(lbl_partitions);
             Controls.Add(btn_annuler);
             Controls.Add(btn_OK);
             Controls.Add(label3);
@@ -130,6 +154,7 @@
             Text = "Gestion commandes";
             Load += FormGestionCommande_Load;
             ((System.ComponentModel.ISupportInitialize)BsClients3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BS_partitions).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,5 +170,8 @@
         private Button btn_OK;
         private BindingSource BsClients3;
         private Button btn_annuler;
+        private Label lbl_partitions;
+        private CheckedListBox clb_partitions;
+        private BindingSource BS_partitions;
     }
 }

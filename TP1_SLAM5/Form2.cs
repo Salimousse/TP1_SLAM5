@@ -84,7 +84,9 @@ namespace TP1_SLAM5
                 x.Montantcde,
                 x.NumcliNavigation.Nomcli,
                 x.NumcliNavigation.Prenomcli
-            });
+            })
+            .OrderBy(x => x.Numcde); // Tri par ordre croissant des numéros de commande  
+            dgvCommande.DataSource = BsCommande;
         }
 
         private void button2_Click(object sender, EventArgs e)

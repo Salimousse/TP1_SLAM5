@@ -62,6 +62,25 @@ namespace TP1_SLAM5
             cbClient.DataSource = BsClients3;
             cbClient.SelectedIndex = -1;
 
+            BS_partitions.DataSource = Modele.listePartitions();
+
+
+            clb_partitions.DataSource = BS_partitions;
+            clb_partitions.DisplayMember = "Libpart";
+            clb_partitions.ValueMember = "Numpart";
+            clb_partitions.ClearSelected();
+
+            var partitionsSelectionnes = clb_partitions.CheckedItems.Cast<Partition>().ToList();
+
+
+
+
+
+
+
+
+
+
 
 
 
